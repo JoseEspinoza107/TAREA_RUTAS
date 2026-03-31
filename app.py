@@ -1,25 +1,20 @@
 from flask import Flask
 
-
 app = Flask(__name__)
 
-@app.route("/")
-def inicio():
-    return "<h1>Pagina de inicio"
+@app.route("/usuario/<nombre>")
+def perfil_usuario(nombre):
+    return f"Perfil de: <strong> {nombre}</strong>"
+@app.route("/post/<id>")
+def ver_post(id):
+    return f"Mostrando el post: <strong>{id}</strong>"
 
-@app.route("/acerca-de")
-def acerca_de():
-    return "<h1>informacion de nosotros"
+@app.route("/categoria/<categoria>/<producto>")
+def productos(categoria,producto):
+    return f"categoria: {categoria}, Producto:{producto}"
 
-@app.route("/contacto")
-def contacto():
-    return "<h1>Pagina de contacto"
+    
 
-@app.route("/info")
-@app.route("/informacion")
-@app.route("/about")
-def informacion():
-    return "<h1>pagina de informacion</h1>"
 
 if __name__ == "__main__":
-    app.run(debug = True)
+    app.run(debug=True)
